@@ -17,7 +17,7 @@ function Person(name, gender) {
  this.name = name;
  this.gender = gender;
 }
-'''
+```
 
 This is just a normal named function declaration with the small difference that its name is
 uppercase. This is not a rule enforced by the language in any way but rather a consequence
@@ -53,12 +53,12 @@ That example produces the same instance as invoking new would. First, we create 
 to the connor variable. We then set that variables __proto__ property to the prototype object of the constructor.
 
 Explaining in depth both the __proto__ and protoype properties would make this post far too long and will be reserved
-for another post in the future. For now, we'll just say that these two properties create a prototype chain that allows
+for another post in the future. For now, I will just say that these two properties create a prototype chain that allows
 inheritance in js by saying that all instances should inherit metods and values from the constructors prototype.
 
 Finally we invoke the Person function using ```call``` so we can manually set the context as the first variable. In this example
 that context will be the object we created. In the scope of the function ```this``` will now refer to the object so saying
-```this.name = name``` is the same as ```connor.name = name```. It's just normal assignment but with a specified context bound.
+```this.name = name``` is the same as ```connor.name = name```. It`s just normal assignment but with a specified context bound.
 
 ### Protecting misuse of new
 What do you think will happen if we call the Person constructor without using new?
@@ -70,8 +70,8 @@ var connor = Person()
 Probably not what you expect. The variable connor will be ```undefined```. This is because without new there is no plain object passed
 in and bound to ```this``` and so nothing is implicitly returned.
 
-We can code defensively against this possibility by checking whether the object passed in is an instance of the Constructor and call it proper;y
-if it isn't;
+We can code defensively against this possibility by checking whether the object passed in is an instance of the Constructor and call it properly
+with new if it fails the check.
 
 ```
 function Person(name, gender) {
